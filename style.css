@@ -1,0 +1,135 @@
+/* Global styles */
+
+body {
+  background-color: #1c1c1c;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header styles */
+
+header {
+  background-color: rgba(33, 33, 33, 0.7); /* 70% opacity */
+  padding: 27px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Banner styles */
+
+section#banner {
+  background-image: url('https://plus.unsplash.com/premium_photo-1669047384683-9959509d094c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80');
+  background-size: cover;
+  padding: 300px;
+  text-align: center;
+}
+
+section#banner h2 {
+  font-size: 50px;
+  margin-bottom: 90px;
+}
+
+section#banner p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* Featured games styles */
+
+section#featured-games {
+  padding: 50px;
+  text-align: center;
+}
+
+section#featured-games h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.game {
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.game img {
+  max-width: 100%;
+  height: auto;
+}
+
+.game h3 {
+  font-size: 24px;
+  margin: 20px;
+}
+
+.game p {
+  font-size: 16px;
+  margin: 20px;
+}
+
+.game .button {
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.game .button:hover {
+  background-color: #c0392b;
+}
+
+/* Footer styles */
+
+footer {
+  background-color: #212121;
+  padding: 30px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: #fff;
+}
