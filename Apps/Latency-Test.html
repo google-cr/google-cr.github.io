@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Latency Test</title>
+    <style>
+      body{font-family:Arial,sans-serif}
+      h1{text-align:center}
+      ul,li{margin:0;padding:0;list-style:none}
+      li{margin:5px 0}
+      .total{font-weight:bold}
+      button{padding:10px;margin:10px 0;background:#4CAF50;color:white;border:none;border-radius:4px;cursor:pointer}
+    </style>
+  </head>
+  <body>
+    <h1>Latency Test</h1>
+    <p>Total response time: <span id="total"></span>ms</p>
+    <ul id="results"></ul>
+    <div>
+      <input type="text" id="name" placeholder="Server Name">
+      <input type="text" id="url" placeholder="Server URL">
+      <button onclick="addServer()">Add Server</button>
+      <button onclick="pingAllServers()">Ping Servers</button>
+    </div>
+    <script>
+      var servers = [
+        {name: "AWS", url: "https://aws.amazon.com/ServerPing/"},
+        {name: "Google", url: "https://www.google.com"},
+        {name: "Youtube ", url: "https://youtube.com"},
+      ];
+
+      function pingServer(server) {
+        var startTime = (new Date()).getTime();
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            var endTime = (new Date()).getTime();
+            var responseTime = endTime - startTime;
+            var listItem = document.createElement("li");
+            listItem.innerHTML = server.name + ": " + responseTime + "ms";
+            document.getElementById("results").appendChild(listItem);
+            updateTotal(responseTime);
+          }
+        };
+        xhr.open("GET", server.url, true);
+        xhr.send();
+      }
+
+      function pingAllServers() {
+        document.getElementById("results").innerHTML = "";
+        for (var i = 0; i < servers.length; i++) {
+          pingServer(servers[i]);
+        }
+      }
+
+      function addServer() {
+        var name = document.getElementById("name").value;
+        var url = document.getElementById("url").value;
+        servers.push({name: name, url: url});
+        document.getElementById("name").value = "";
+        document.getElementById("url").value = "";
+      }
+
+      function updateTotal(responseTime) {
+        var totalElement = document.getElementById("total");
+        var currentTotal = parseInt(totalElement.innerHTML) || 0;
+        totalElement.innerHTML = currentTotal + responseTime;
+        totalElement.classList.add("total");
+      }
+    </script>
+  </body>
+</html>
