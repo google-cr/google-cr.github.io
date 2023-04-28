@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-      /* Set the height and width to 100% for both the HTML and the body elements */
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      
-      /* Set the height and width to 100% for the iframe element */
-      #myIframe {
-        height: 100%;
-        width: 100%;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <iframe id="myIframe" src="https://health.pladic.com"></iframe>
-  </body>
+<head>
+	<title>rKazwire | poweradenetwork</title>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<style type="text/css">
+		#myIframe {
+			width: 100%;
+			height: 500px;
+			border: none;
+		}
+	</style>
+	<script type="text/javascript">
+		function onVerify(token) {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status === 200) {
+						// remove reCAPTCHA element
+						var recaptchaElement = document.getElementById("recaptcha");
+						recaptchaElement.parentNode.removeChild(recaptchaElement);
+						
+						// load iframe content
+						var iframeElement = document.getElementById("myIframe");
+						iframeElement.src = "https://health.pladic.com";
+					} else {
+						alert("reCAPTCHA verification failed.");
+					}
+				}
+			}
+			xhr.open("POST", "verification.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("g-recaptcha-response=" + token);
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<div id="recaptcha" class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-callback="onVerify"></div>
+	</form>
+	<iframe id="myIframe"></iframe>
+</body>
 </html>
