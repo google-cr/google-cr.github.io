@@ -5,6 +5,13 @@
   <meta charset="UTF-8">
   <title>Home | PoweradeNetwork</title>
   	<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf4ncIlAAAAAGBrap9zozhCUj1o4N2LTDVom_sz"></script>
+  <script>
+grecaptcha.enterprise.ready(function() {
+    grecaptcha.enterprise.execute('6Lf4ncIlAAAAAGBrap9zozhCUj1o4N2LTDVom_sz', {action: 'login'}).then(function(token) {
+       ...
+    });
+});
+</script>
   <link rel="stylesheet" href="style.css">
 </head>
 
