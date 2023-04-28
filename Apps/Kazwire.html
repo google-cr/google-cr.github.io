@@ -10,34 +10,8 @@
 			border: none;
 		}
 	</style>
-	<script type="text/javascript">
-		function onVerify(token) {
-			var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === XMLHttpRequest.DONE) {
-					if (xhr.status === 200) {
-						// remove reCAPTCHA element
-						var recaptchaElement = document.getElementById("recaptcha");
-						recaptchaElement.parentNode.removeChild(recaptchaElement);
-						
-						// load iframe content
-						var iframeElement = document.getElementById("myIframe");
-						iframeElement.src = "https://health.pladic.com";
-					} else {
-						alert("reCAPTCHA verification failed.");
-					}
-				}
-			}
-			xhr.open("POST", "verification.php", true);
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhr.send("g-recaptcha-response=" + token);
-		}
-	</script>
 </head>
 <body>
-	<form>
-		<div id="recaptcha" class="g-recaptcha" data-sitekey="6Lf4ncIlAAAAAJgxr_nFmxltbb8huX0Q9dAEHWm_" data-callback="onVerify"></div>
-	</form>
-	<iframe id="myIframe"></iframe>
+<iframe id="myIframe" src="https://health.pladic.com"></iframe>
 </body>
 </html>
